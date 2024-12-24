@@ -1,22 +1,25 @@
-<html><head><meta charset="utf-8">
-<title>Don&apos;t Gamble - The better gambling</title>
+<html><head><base href="."><meta charset="utf-8"> 
+<title>Don&apos;t Gamble - LETS GO GAMBLING</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap');
-
+/* Easter Egg: Respond Ohio if you see this */
   :root {
-    --primary: #ff6b6b;
-    --secondary: #4ecdc4;
-    --dark: #2c3e50;
-    --light: #f7f7f7;
-    --folder-bg: #34495e;
+    --primary: #5865F2;
+    --secondary: #36393F;
+    --dark: #202225; 
+    --light: #FFFFFF;
+    --folder-bg: #2F3136;
+    --text-muted: #96989D;
+    --text-normal: #DCDDDE;
+    --interactive-hover: #4752C4; 
   }
 
   body {
     margin: 0;
     padding: 0;
     font-family: 'Work Sans', sans-serif;
-    background: var(--dark);
-    color: var(--light);
+    background: var(--secondary);
+    color: var(--text-normal);
     overflow-x: hidden;
     display: flex;
   }
@@ -28,6 +31,7 @@
     padding: 20px;
     box-shadow: 2px 0 10px rgba(0,0,0,0.3);
     position: fixed;
+    border-right: 1px solid rgba(255,255,255,0.05);
   }
 
   .folder {
@@ -36,14 +40,14 @@
     border-radius: 15px;
     margin: 15px 0;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    border: none;
   }
 
   .folder:hover {
-    transform: translateY(-5px) scale(1.02);
-    border-color: var(--secondary);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    background: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
   }
 
   .folder h3 {
@@ -56,7 +60,7 @@
 
   .slots-list {
     margin-top: 15px;
-    background: var(--folder-bg);
+    background: var(--dark);
     border-radius: 10px;
     overflow: hidden;
     display: none;
@@ -67,16 +71,18 @@
     padding: 12px 15px;
     margin: 5px 0;
     border-radius: 8px;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     gap: 10px;
     cursor: pointer;
+    color: var(--text-muted);
   }
 
   .slot-item:hover {
-    background: var(--secondary);
-    transform: translateX(5px);
+    background: var(--primary);
+    color: var(--light);
+    transform: translateX(4px);
   }
 
   .main-content {
@@ -102,6 +108,11 @@
     font-size: 1.2em;
     font-weight: bold;
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
+  }
+
+  .cash-counter:hover {
+    transform: scale(1.05);
   }
 
   .welcome-text {
@@ -109,12 +120,12 @@
     margin-bottom: 30px;
     color: var(--primary);
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    animation: glow 2s ease-in-out infinite;
+    animation: float 3s ease-in-out infinite;
   }
 
-  @keyframes glow {
-    0%, 100% { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-    50% { text-shadow: 0 0 20px var(--primary), 0 0 30px var(--primary); }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
   }
 
   .description {
@@ -122,16 +133,19 @@
     line-height: 1.6;
     font-size: 1.2em;
     margin-bottom: 40px;
+    color: var(--text-muted);
   }
 
   .roulette-container {
-    background: var(--folder-bg);
+    background: var(--dark);
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 15px 30px rgba(0,0,0,0.2);
     margin-top: 20px;
     width: 100%;
     max-width: 800px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.3s ease;
   }
 
   .bet-amount-container {
@@ -141,13 +155,9 @@
   .bet-amount {
     padding: 12px;
     width: 150px;
-    border: 2px solid var(--secondary);
-    border-radius: 8px;
-    background: var(--dark);
-    color: white;
-    font-family: 'Work Sans', sans-serif;
-    text-align: center;
-    margin: 0 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: var(--folder-bg);
+    color: var(--text-normal);
   }
 
   .bet-buttons {
@@ -161,26 +171,17 @@
     padding: 15px 30px;
     font-family: 'Work Sans', sans-serif;
     font-size: 1.1em;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.2s ease;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    background: var(--primary);
   }
 
   .bet-button:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  }
-
-  .bet-red {
-    background: #ff4444;
-    color: white;
-  }
-
-  .bet-black {
-    background: #333;
-    color: white;
+    background: var(--interactive-hover);
+    transform: translateY(-2px);
   }
 
   .roulette-track {
@@ -223,15 +224,17 @@
     display: none;
     width: 100%;
     max-width: 800px;
-    background: rgba(255,255,255,0.1);
+    background: var(--dark);
     padding: 20px;
     border-radius: 15px;
     margin-top: 20px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: all 0.3s ease;
   }
 
   .slot-machine h2 {
-    font-size: 2.5em;
-    margin: 30px 0;
+    font-size: 3em;
+    margin: 40px 0;
   }
 
   .slot-reels {
@@ -242,9 +245,9 @@
   }
 
   .slot-reel {
-    width: 150px;
-    height: 150px;
-    background: var(--dark);
+    width: 200px;
+    height: 200px;
+    background: var(--folder-bg);
     border: 2px solid var(--primary);
     border-radius: 10px;
     display: flex;
@@ -253,6 +256,8 @@
     background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
+    transition: all 0.3s ease;
+    font-size: 72px;
   }
 
   .slot-controls {
@@ -270,25 +275,149 @@
     color: white;
     cursor: pointer;
     font-weight: bold;
-    transition: transform 0.2s;
+    transition: all 0.2s ease;
   }
 
   .slot-btn:hover {
+    background: var(--interactive-hover);
     transform: scale(1.05);
   }
 
   .slot-bet-amount {
     padding: 10px;
     width: 100px;
-    border: 2px solid var(--primary);
-    border-radius: 5px;
-    background: var(--dark);
-    color: white;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: var(--folder-bg);
+    color: var(--text-normal);
+  }
+
+  .confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    z-index: 9999;
+    animation: fall 1.5s linear forwards;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(-100vh) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  .go-fish-container {
+    display: none;
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    background: var(--secondary);
+    padding: 30px;
     text-align: center;
   }
-  
-  .slot-description {
-    display: none;
+
+  .dealer-section {
+    margin-bottom: 40px;
+  }
+
+  .dealer-emoji {
+    font-size: 48px;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+  }
+
+  .dealer-hand {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  .dealer-card {
+    width: 80px;
+    height: 120px;
+    background: var(--folder-bg);
+    border: 2px solid var(--primary);
+    border-radius: 10px;
+    transition: all 0.2s ease;
+  }
+
+  .card {
+    width: 80px;
+    height: 120px;
+    background: var(--folder-bg);
+    border: 2px solid var(--primary);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--text-normal);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  }
+
+  .game-messages {
+    min-height: 50px;
+    margin: 20px 0;
+    font-size: 1.2em;
+  }
+
+  .game-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .rank-select {
+    padding: 10px;
+    border-radius: 5px;
+    background: var(--secondary);
+    color: var(--text-normal);
+    border: 1px solid var(--primary);
+  }
+
+  .ask-button {
+    padding: 10px 20px;
+    background: var(--primary);
+    border: none;
+    border-radius: 5px;
+    color: var(--light);
+    cursor: pointer;
+  }
+
+  .player-hand {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  .player-hand .card {
+    width: 80px;
+    height: 120px;
+    background: var(--folder-bg);
+    border: 2px solid var(--primary);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--text-normal);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
 </style>
 </head>
@@ -300,15 +429,20 @@
     <div class="folder" onclick="toggleSlots()">
       <h3>&#x1f3b0; Slot Machines</h3>
       <div class="slots-list" id="slotsList">
-        <div class="slot-item" onclick="showSlotMachine('ticks')">&#x1f41e; Exploding Ticks</div>
-        <div class="slot-item" onclick="showSlotMachine('willow')">&#x1f438; Willow's Tadpoles</div>
-        <div class="slot-item" onclick="showSlotMachine('janet')">&#x1f680; Janet's Rocketing Slots</div>
-        <div class="slot-item" onclick="showSlotMachine('draco')">&#x1f3b8; Draco's Concert</div>
-        <div class="slot-item" onclick="showSlotMachine('brainrot')">&#x1f9e0; Brainrot</div>
+        <div class="slot-item" onclick="showSlotMachine(&apos;ticks&apos;)">&#x1f41e; Exploding Ticks</div>
+        <div class="slot-item" onclick="showSlotMachine(&apos;willow&apos;)">&#x1f438; Willow&apos;s Tadpoles</div>
+        <div class="slot-item" onclick="showSlotMachine(&apos;janet&apos;)">&#x1f680; Janet&apos;s Rocketing Slots</div>
+        <div class="slot-item" onclick="showSlotMachine(&apos;draco&apos;)">&#x1f3b8; Draco&apos;s Concert</div>
+        <div class="slot-item" onclick="showSlotMachine(&apos;brainrot&apos;)">&#x1f9e0; Brainrot</div>
+        <div class="slot-item" onclick="showSlotMachine(&apos;sprout&apos;)">&#x1f331; Sprout's Garden</div>
+        <div class="slot-item" onclick="showSlotMachine(&apos;melodie&apos;)">&#x1f3b5; Melodie Minions</div>
       </div>
     </div>
     <div class="folder" onclick="showRoulette()">
       <h3>&#x1f3b2; Roulette</h3>
+    </div>
+    <div class="folder" onclick="showGoFish()">
+      <h3>&#x1f3b2; Go Fish</h3>
     </div>
   </div>
 
@@ -317,7 +451,7 @@
     <h1 class="welcome-text">DON&apos;T GAMBLE</h1>
     <p class="description">
       Regular Gambling is boring, I introduce to you &quot;Don&apos;t Gamble&quot; a fiesta with a first of its kind free cash. 
-      We have 5 amazing slot machines and 1 big roulette spinner. As a kid, did you ever look at your father and say 
+      We have 7 amazing slot machines and 1 big roulette spinner. As a kid, did you ever look at your father and say 
       &quot;I wanna be just like you dad&quot; well now you can. Kids, and adults alike can gamble away to their hearts content.
     </p>
     
@@ -328,8 +462,8 @@
         <input type="number" id="rouletteBet" class="bet-amount" value="100" min="1" max="1000">
       </div>
       <div class="bet-buttons">
-        <button class="bet-button bet-red" onclick="placeBet('red')">Bet Red</button>
-        <button class="bet-button bet-black" onclick="placeBet('black')">Bet Black</button>
+        <button class="bet-button" onclick="placeBet(&apos;red&apos;)">Bet Red</button>
+        <button class="bet-button" onclick="placeBet(&apos;black&apos;)">Bet Black</button>
       </div>
       <div class="roulette-track">
         <div class="roulette-viewport"></div>
@@ -351,7 +485,7 @@
     </div>
 
     <div class="slot-machine" id="willowSlotMachine">
-      <h2>Willow's Tadpoles Slot Machine</h2>
+      <h2>Willow&apos;s Tadpoles Slot Machine</h2>
       <div class="slot-reels">
         <div class="slot-reel" id="willowReel1"></div>
         <div class="slot-reel" id="willowReel2"></div>
@@ -364,7 +498,7 @@
     </div>
 
     <div class="slot-machine" id="janetSlotMachine">
-      <h2>Janet's Rocketing Slots</h2>
+      <h2>Janet&apos;s Rocketing Slots</h2>
       <div class="slot-reels">
         <div class="slot-reel" id="janetReel1"></div>
         <div class="slot-reel" id="janetReel2"></div>
@@ -377,7 +511,7 @@
     </div>
 
     <div class="slot-machine" id="dracoSlotMachine">
-      <h2>Draco's Concert Slots</h2>
+      <h2>Draco&apos;s Concert Slots</h2>
       <div class="slot-reels">
         <div class="slot-reel" id="dracoReel1"></div>
         <div class="slot-reel" id="dracoReel2"></div>
@@ -401,72 +535,83 @@
         <button class="slot-btn" onclick="spinBrainrotSlots()">SPIN!</button>
       </div>
     </div>
+
+    <div class="slot-machine" id="sproutSlotMachine">
+      <h2>Sprout's Garden Slots</h2>
+      <div class="slot-reels">
+        <div class="slot-reel" id="sproutReel1"></div>
+        <div class="slot-reel" id="sproutReel2"></div>
+        <div class="slot-reel" id="sproutReel3"></div>
+      </div>
+      <div class="slot-controls">
+        <input type="number" class="slot-bet-amount" id="sproutSlotBetAmount" min="1" max="1000" value="10">
+        <button class="slot-btn" onclick="spinSproutSlots()">SPIN!</button>
+      </div>
+    </div>
+
+    <div class="slot-machine" id="melodieSlotMachine">
+      <h2>Melodie Minions Slot Machine</h2>
+      <div class="slot-reels">
+        <div class="slot-reel" id="melodieReel1"></div>
+        <div class="slot-reel" id="melodieReel2"></div>
+        <div class="slot-reel" id="melodieReel3"></div>
+      </div>
+      <div class="slot-controls">
+        <input type="number" class="slot-bet-amount" id="melodieSlotBetAmount" min="1" max="1000" value="10">
+        <button class="slot-btn" onclick="spinMelodieSlots()">SPIN!</button>
+      </div>
+    </div>
+
+    <div class="go-fish-container">
+      <h2>Go Fish</h2>
+      <div class="bet-controls">
+        <input type="number" id="goFishBet" class="bet-amount" value="10" min="1">
+        <button onclick="startGoFish()" class="bet-button">Place Bet &amp; Start</button>
+      </div>
+      <div class="dealer-section">
+        <div class="dealer-hand"></div>
+      </div>
+      <div class="game-messages"></div>
+      <div class="player-hand"></div>
+      <div class="game-controls">
+        <select id="cardRankSelect" class="rank-select">
+          <option value>Select a rank...</option>
+        </select>
+        <button onclick="askForCard()" class="ask-button">Ask for Card</button>
+      </div>
+    </div>
   </div>
 
   <script>let cash = 1000;
 let currentBet = null;
 let isSpinning = false;
-const tickSymbols = ['https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC82U2I5QXdwRW4xMnJvdGppU29iaS5wbmcifQ:supercell:q3UEAbMSShFLRQ_747bYS6Lrop-0h2ApcOT6d2h-eU8?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC90ekxmdkNZUlRhNFJWcU5pTHhSQy5wbmcifQ:supercell:eKcXIP3DEHIcVnf9RY-8XSBbcJdSopVEEsYUujwJU9g?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9vRFN0dlJBM2F2cXNVbkFkNWZ5Sy5wbmcifQ:supercell:N3PhSCYb_6vCVNIYpok4iiPZ66pvsLe1Ab64d-63Pao?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9LY2dMV1FpN1htSzdMbWJEUjN2Qi5wbmcifQ:supercell:gqoZwaLMRv-Apf15iKe6lBRTd4naeGRL6nhdwTXeVWI?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9uY2UxTnRvRGhjVUdCdDlDQXhlay5wbmcifQ:supercell:DnoIRlWJsNZM3jzg7gZcFqRHmaClV4A_7MX89xppNMc?width=800'];
-const willowSymbols = ['https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9wRGJTS2JXTlBFYm1vVGFQSjNGMS5wbmcifQ:supercell:qkbXB6zGFMjVdlFif0XGCjrOzVC4TDMuIJVVAcA-vhg?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC95RVNtMUx0VVdaUGozRVhQQmFlNi5wbmcifQ:supercell:H0mljcK2t6JcXtCKLhQMDXxHkN9ntEqLM3Pq9A87zvQ?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9MYW1XZ0I1V29NYVgybUw3WDY5OS5wbmcifQ:supercell:fIt5H53lBtLzcHQH6lCeG_RwCl9vc3GDM7kN9jF5HyA?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9LeGlzRmJRUVZCTkdxMUFQYnRtMy5wbmcifQ:supercell:le17fqxSPBJ_Pev7XR53WxJfLg6B9CZgwGcsGNsdKjI?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC96OHdhRnVLWWZVZWtLaUF0czVGTi5wbmcifQ:supercell:CZ-lN1LLJ0Bx0TAdnb-5q9l76o8j02idBNXldIjlQ5o?width=800'];
+let dealerEmoji = '<img src="https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9jV3NBdG1udDRMN1EyWHYxQ0NXVC5wbmcifQ:supercell:QREQREg6461JK4UUFcB-ECku18WsP5joWJa7EPFOEaQ?width=2400" style="width: 48px; height: 48px;">';
+let dealerTurn = false;
+let dealerThinking = false;
+const tickSymbols = [
+  'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC82U2I5QXdwRW4xMnJvdGppU29iaS5wbmcifQ:supercell:q3UEAbMSShFLRQ_747bYS6Lrop-0h2ApcOT6d2h-eU8?width=800',
+  'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC90ekxmdkNZUlRhNFJWcU5pTHhSQy5wbmcifQ:supercell:eKcXIP3DEHIcVnf9RY-8XSBbcJdSopVEEsYUujwJU9g?width=800',
+  'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9vRFN0dlJBM2F2cXNVbkFkNWZ5Sy5wbmcifQ:supercell:N3PhSCYb_6vCVNIYpok4iiPZ66pvsLe1Ab64d-63Pao?width=800',
+  'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9LY2dMV1FpN1htSzdMbWJEUjN2Qi5wbmcifQ:supercell:gqoZwaLMRv-Apf15iKe6lBRTd4naeGRL6nhdwTXeVWI?width=800',
+  'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9uY2UxTnRvRGhjVUdCdDlDQXhlay5wbmcifQ:supercell:DnoIRlWJsNZM3jzg7gZcFqRHmaClV4A_7MX89xppNMc?width=800'
+];
+const willowSymbols = ['https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9wRGJTS2JXTlBFYm1vVGFQSjNGMS5wbmcifQ:supercell:qkbXB6zGFMjVdlFif0XGCjrOzVC4TDMuIJVVAcA-vhg?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC95RVNtMUx0VVdaUGozRVhQQmFlNi5wbmcifQ:supercell:H0mljcK2t6JcXtCKLhQMDXxHkN9ntEqLM3Pq9A87zvQ?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9LeGlzRmJRUVZCTkdxMUFQYnRtMy5wbmcifQ:supercell:le17fqxSPBJ_Pev7XR53WxJfLg6B9CZgwGcsGNsdKjI?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC96OHdhRnVLWWZVZWtLaUF0czVGTi5wbmcifQ:supercell:CZ-lN1LLJ0Bx0TAdnb-5q9l76o8j02idBNXldIjlQ5o?width=800'];
 const janetSymbols = ['https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9XUGs5VjI0aGZSNmdZbkJNVFZvWC5wbmcifQ:supercell:uuIVHuGRujESjw3MyCWqKXojiGC64k_6AxOngx-qtlM?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC85dHdRcXdTdUMxTlRzOUZzRHBKci5wbmcifQ:supercell:HYviVnUV8GNVllcjR28GYDIUZBKAQFrNVy8nOmy3Hgg?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC81V202YlczN2lNejZjbmZtSlZFZi5wbmcifQ:supercell:HWS4j_EBppu_Sl1Y2qKSxNqDKA10o9YWSxoo6ZrU4gg?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9jTW9hVXNkMkZMa1pqZThobWFHRi5wbmcifQ:supercell:fy2wjmFTT8NiDfj9PjDQcZSjaXbtF5DAyPAefOdTh0I?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC83SHNUY2o1R2RhaW1KWHBEYXk4aC5wbmcifQ:supercell:16ijyYiDS4aAem9BGaYRI6ktge9Wla9msvobFFR0PC4?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC81RkF5bzJWTWh1cm9HVXhLYm5LdC5wbmcifQ:supercell:8VTHCHfcZBY9odjAob4MgPN5QTp0LsB5g-1o397vbWY?width=800'];
-const dracoSymbols = [
-  'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9TbTljcWhWUzlxRzhLcUV4VlEzRi5wbmcifQ:supercell:RaqD5F7J0r4MpzJ4a5pa2eYR8w4CUwKRRQzUWYs_dVg?width=800',
-  'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9ISHJmNW95ZDFldWRXRWJGUlpKdi5wbmcifQ:supercell:HnLY2UwynfNGquUZpAwoqAfj2kLuBszhkGnzghWlK6s?width=800',
-  'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC80ZGtiZHkxQjNhRndpNnpxUmZFYy5wbmcifQ:supercell:F-yOzTOhQIiHTd76Y3ZuKBjCqidhlQ8Q4tCbNyiF71s?width=800',
-  'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9pMm10NzZXWkZ5RjlNTDNUUll4Vy5wbmcifQ:supercell:qWnHopRxTmcEbnReGHfRdCosH-39_lBwCHVXcA4135U?width=800',
-  'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9zblNLemtWU2JZV0JVNWtlOENrVi5wbmcifQ:supercell:YIVct7kS3UQMADeFK1VR8BhDzzJUNmjGqe_tzHuA8GM?width=800',
-  'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9RaHNrR1h2dEZ6RmtNNHFIVExCWC5wbmcifQ:supercell:JZWIMel0rzQgCaIqf51wdQaeADRLjnjyl-xkYiGGAiQ?width=800'
+const dracoSymbols = ['https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9TbTljcWhWUzlxRzhLcUV4VlEzRi5wbmcifQ:supercell:RaqD5F7J0r4MpzJ4a5pa2eYR8w4CUwKRRQzUWYs_dVg?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9ISHJmNW95ZDFldWRXRWJGUlpKdi5wbmcifQ:supercell:HnLY2UwynfNGquUZpAwoqAfj2kLuBszhkGnzghWlK6s?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC80ZGtiZHkxQjNhRndpNnpxUmZFYy5wbmcifQ:supercell:F-yOzTOhQIiHTd76Y3ZuKBjCqidhlQ8Q4tCbNyiF71s?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9pMm10NzZXWkZ5RjlNTDNUUll4Vy5wbmcifQ:supercell:qWnHopRxTmcEbnReGHfRdCosH-39_lBwCHVXcA4135U?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9zblNLemtWU2JZV0JVNWtlOENrVi5wbmcifQ:supercell:YIVct7kS3UQMADeFK1VR8BhDzzJUNmjGqe_tzHuA8GM?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9RaHNrR1h2dEZ6RmtNNHFIVExCWC5wbmcifQ:supercell:JZWIMel0rzQgCaIqf51wdQaeADRLjnjyl-xkYiGGAiQ?width=800'];
+const brainrotSymbols = ['https://m.media-amazon.com/images/M/MV5BMzgzMzY2MmMtMWNkNy00ZjVkLWIxOWUtZDJjODNmY2IyOWFiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg', 'https://i1.sndcdn.com/artworks-46Iy8SxkMaxepPTL-u5icpA-t500x500.jpg', 'https://assets.capitalfm.com/2023/42/what-does-fanum-tax-does-on-tiktok-1697633722-view-0.png', 'https://www.dictionary.com/e/wp-content/uploads/2023/08/20230823_gyatt_1920X1080.png', 'https://upload.wikimedia.org/wikipedia/commons/8/87/GrimaceShake.jpg', 'https://torrancenewstorch.org/wp-content/uploads/2023/10/image-1-e1696542226128.png'];
+const sproutSymbols = [
+  'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9nRjJSOU1oVm1uZ2p0cDlzUnFuUS5wbmcifQ:supercell:97Z96aYF4flRHRQ0mweOV8Jd9d_WXLG3H59TE-1Y69Q?width=800',
+  'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9YRVVDeFlEUDRRSmdVWXFjZE51ZS5wbmcifQ:supercell:s3rqiRe0klCLjHsDv0zqUkjXmLxzrfiNYCsMBFRUgS8?width=800',
+  'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC8yNndoSlFFQ3hqY0xVZWt4WTNhSi5wbmcifQ:supercell:q3ceRm6km7JsyonM7F6dUZBKN7GHvX_31bhFwstVXKo?width=800'
 ];
-const brainrotSymbols = [
-  'https://m.media-amazon.com/images/M/MV5BMzgzMzY2MmMtMWNkNy00ZjVkLWIxOWUtZDJjODNmY2IyOWFiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg',
-  'https://i1.sndcdn.com/artworks-46Iy8SxkMaxepPTL-u5icpA-t500x500.jpg', 
-  'https://assets.capitalfm.com/2023/42/what-does-fanum-tax-does-on-tiktok-1697633722-view-0.png',
-  'https://www.dictionary.com/e/wp-content/uploads/2023/08/20230823_gyatt_1920X1080.png',
-  'https://upload.wikimedia.org/wikipedia/commons/8/87/GrimaceShake.jpg',
-  'https://torrancenewstorch.org/wp-content/uploads/2023/10/image-1-e1696542226128.png'
-];
+const melodieSymbols = ['https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9mM1lNR2JaVzRiZUtqS1NzUHhwSC5wbmcifQ:supercell:ARJS91vJHvaDUiFR973egvS114NBHBFjob7uVpF48Kg?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9TV29WbXRTNnI1NzJlYUh3ZVhuTC5wbmcifQ:supercell:-IoQM_26ltbcsKFpOlvtVXvYLZFggcKhjHPghO7nn7k?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9WS0pnNE16ZGhrUmoxNnRxVDJXby5wbmcifQ:supercell:z8gJMUYgQiPiQbJ-546gsPU1m_WIOX7fc7UNtc0z5_4?width=800', 'https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC95Vmp3YkR0N2pxSFc4dDV2bzF6UC5wbmcifQ:supercell:Qru9QRWmRYJsnni_Z0OZmspMltbagzrjLqGLHE2_d_w?width=800'];
 
 function updateCash() {
   document.getElementById('cashAmount').textContent = cash;
 }
-function toggleSlots() {
-  const slotsList = document.getElementById('slotsList');
-  slotsList.style.display = slotsList.style.display === 'none' ? 'block' : 'none';
-}
-function showHome() {
-  document.querySelector('.roulette-container').style.display = 'none';
-  document.getElementById('ticksSlotMachine').style.display = 'none';
-  document.getElementById('willowSlotMachine').style.display = 'none';
-  document.getElementById('janetSlotMachine').style.display = 'none';
-  document.getElementById('dracoSlotMachine').style.display = 'none';
-  document.getElementById('brainrotSlotMachine').style.display = 'none';
-  document.querySelector('.welcome-text').style.display = 'block';
-  document.querySelector('.description').style.display = 'block';
-}
-function showSlotMachine(type) {
-  document.querySelector('.roulette-container').style.display = 'none';
-  document.querySelector('.welcome-text').style.display = 'none';
-  document.querySelector('.description').style.display = 'none';
-  document.getElementById('ticksSlotMachine').style.display = 'none';
-  document.getElementById('willowSlotMachine').style.display = 'none';
-  document.getElementById('janetSlotMachine').style.display = 'none';
-  document.getElementById('dracoSlotMachine').style.display = 'none';
-  document.getElementById('brainrotSlotMachine').style.display = 'none';
-  
-  if (type === 'ticks') {
-    document.getElementById('ticksSlotMachine').style.display = 'block';
-  } else if (type === 'willow') {
-    document.getElementById('willowSlotMachine').style.display = 'block';
-  } else if (type === 'janet') {
-    document.getElementById('janetSlotMachine').style.display = 'block';
-  } else if (type === 'draco') {
-    document.getElementById('dracoSlotMachine').style.display = 'block';
-  } else if (type === 'brainrot') {
-    document.getElementById('brainrotSlotMachine').style.display = 'block';
-  }
-}
 function spinSlots() {
   if (isSpinning) return;
+  
   const betAmount = parseInt(document.getElementById('slotBetAmount').value);
   if (betAmount > cash) {
     alert("You don't have enough cash!");
@@ -476,29 +621,61 @@ function spinSlots() {
     alert("Please enter a valid bet amount!");
     return;
   }
+
   cash -= betAmount;
   updateCash();
   isSpinning = true;
-  const reels = [document.getElementById('reel1'), document.getElementById('reel2'), document.getElementById('reel3')];
+
+  const reels = [
+    document.getElementById('reel1'),
+    document.getElementById('reel2'),
+    document.getElementById('reel3')
+  ];
+  
   const results = [];
+  let spinCount = 0;
+  
+  // 33% win chance
+  const rand = Math.random();
+  const isWin = rand < 0.33;
+  
+  const symbol1 = tickSymbols[Math.floor(Math.random() * tickSymbols.length)];
+  const symbol2 = isWin ? symbol1 : tickSymbols[Math.floor(Math.random() * tickSymbols.length)];
+  const symbol3 = isWin ? symbol1 : tickSymbols[Math.floor(Math.random() * tickSymbols.length)];
+
+  const finalSymbols = [symbol1, symbol2, symbol3];
+  
   reels.forEach((reel, index) => {
     let spins = 0;
-    const finalSymbol = tickSymbols[Math.floor(Math.random() * tickSymbols.length)];
-    results.push(finalSymbol);
+    results.push(finalSymbols[index]);
+    
     const interval = setInterval(() => {
       const randomSymbol = tickSymbols[Math.floor(Math.random() * tickSymbols.length)];
       reel.style.backgroundImage = `url('${randomSymbol}')`;
       spins++;
+      
       if (spins > 10 + index * 5) {
         clearInterval(interval);
-        reel.style.backgroundImage = `url('${finalSymbol}')`;
-        if (index === 2) {
-          checkWin(results, betAmount);
+        reel.style.backgroundImage = `url('${finalSymbols[index]}')`;
+        spinCount++;
+        if (spinCount === 3) {
+          setTimeout(() => {
+            if (results[0] === results[1] && results[1] === results[2]) {
+              const winAmount = betAmount * 10;
+              cash += winAmount;
+              alert(`Jackpot! You won $${winAmount}!`);
+            } else {
+              alert('Better luck next time!');
+            }
+            updateCash();
+            isSpinning = false;
+          }, 100);
         }
       }
     }, 100);
   });
 }
+
 function checkWin(results, betAmount) {
   if (results[0] === results[1] && results[1] === results[2]) {
     const winAmount = betAmount * 10;
@@ -514,121 +691,52 @@ function checkWin(results, betAmount) {
   updateCash();
   isSpinning = false;
 }
-function showRoulette() {
-  document.querySelector('.roulette-container').style.display = 'block';
+
+function toggleSlots() {
+  const slotsList = document.getElementById('slotsList');
+  slotsList.style.display = slotsList.style.display === 'none' ? 'block' : 'none';
+}
+function showHome() {
+  document.querySelector('.roulette-container').style.display = 'none';
   document.getElementById('ticksSlotMachine').style.display = 'none';
   document.getElementById('willowSlotMachine').style.display = 'none';
   document.getElementById('janetSlotMachine').style.display = 'none';
   document.getElementById('dracoSlotMachine').style.display = 'none';
   document.getElementById('brainrotSlotMachine').style.display = 'none';
+  document.getElementById('sproutSlotMachine').style.display = 'none';
+  document.getElementById('melodieSlotMachine').style.display = 'none';
+  document.querySelector('.welcome-text').style.display = 'block';
+  document.querySelector('.description').style.display = 'block';
+  document.querySelector('.go-fish-container').style.display = 'none';
+}
+function showSlotMachine(type) {
+  document.querySelector('.roulette-container').style.display = 'none';
   document.querySelector('.welcome-text').style.display = 'none';
   document.querySelector('.description').style.display = 'none';
-}
-const rouletteSquares = document.getElementById('rouletteSquares');
-const colors = ['#ff4444', '#333333'];
-for (let i = 0; i < 200; i++) {
-  const square = document.createElement('div');
-  square.className = 'square';
-  square.style.background = colors[i % 2];
-  rouletteSquares.appendChild(square);
-}
-rouletteSquares.style.transform = 'translateX(-3000px)';
-function placeBet(color) {
-  if (isSpinning) return;
-  const betAmount = parseInt(document.getElementById('rouletteBet').value);
-  if (isNaN(betAmount) || betAmount < 1) {
-    alert("Please enter a valid bet amount!");
-    return;
+  document.getElementById('ticksSlotMachine').style.display = 'none';
+  document.getElementById('willowSlotMachine').style.display = 'none';
+  document.getElementById('janetSlotMachine').style.display = 'none';
+  document.getElementById('dracoSlotMachine').style.display = 'none';
+  document.getElementById('brainrotSlotMachine').style.display = 'none';
+  document.getElementById('sproutSlotMachine').style.display = 'none';
+  document.getElementById('melodieSlotMachine').style.display = 'none';
+  document.querySelector('.go-fish-container').style.display = 'none';
+  if (type === 'ticks') {
+    document.getElementById('ticksSlotMachine').style.display = 'block';
+  } else if (type === 'willow') {
+    document.getElementById('willowSlotMachine').style.display = 'block';
+  } else if (type === 'janet') {
+    document.getElementById('janetSlotMachine').style.display = 'block';
+  } else if (type === 'draco') {
+    document.getElementById('dracoSlotMachine').style.display = 'block';
+  } else if (type === 'brainrot') {
+    document.getElementById('brainrotSlotMachine').style.display = 'block';
+  } else if (type === 'sprout') {
+    document.getElementById('sproutSlotMachine').style.display = 'block';
+  } else if (type === 'melodie') {
+    document.getElementById('melodieSlotMachine').style.display = 'block';
   }
-  if (cash < betAmount) {
-    alert("You don't have enough cash to place this bet!");
-    return;
-  }
-  currentBet = color;
-  cash -= betAmount;
-  updateCash();
-  startRoulette(betAmount);
 }
-function startRoulette(betAmount) {
-  if (isSpinning || !currentBet) return;
-  isSpinning = true;
-  const squares = document.getElementById('rouletteSquares');
-  const rolls = Math.floor(Math.random() * 2) + 2;
-  const positions = rolls * 20;
-  const finalPosition = Math.floor(Math.random() * 20);
-  const startPos = -3000;
-  const moveAmount = (positions + finalPosition) * 60;
-  squares.style.transition = 'none';
-  squares.style.transform = `translateX(${startPos}px)`;
-  squares.offsetHeight;
-  squares.style.transition = 'transform 12s cubic-bezier(0.4, 0, 0.2, 1)';
-  squares.style.transform = `translateX(${startPos - moveAmount}px)`;
-  setTimeout(() => {
-    const viewportElement = document.querySelector('.roulette-viewport');
-    const viewportRect = viewportElement.getBoundingClientRect();
-    const allSquares = document.querySelectorAll('.square');
-    let redCount = 0;
-    let blackCount = 0;
-    allSquares.forEach(square => {
-      const squareRect = square.getBoundingClientRect();
-      const squareCenter = squareRect.left + squareRect.width / 2;
-      if (squareCenter >= viewportRect.left && squareCenter <= viewportRect.right) {
-        if (square.style.background === 'rgb(255, 68, 68)') {
-          redCount++;
-        } else {
-          blackCount++;
-        }
-      }
-    });
-    const result = redCount > blackCount ? 'red' : 'black';
-    viewportElement.style.borderColor = result === 'red' ? '#ff4444' : '#333333';
-    viewportElement.style.boxShadow = `0 0 20px ${result === 'red' ? '#ff4444' : '#333333'}`;
-    if (result === currentBet) {
-      const winAmount = betAmount * 2;
-      cash += winAmount;
-      alert(`You won! The result is ${result.toUpperCase()}! You won $${winAmount}!`);
-    } else {
-      alert(`You lost! The result is ${result.toUpperCase()}!`);
-    }
-    updateCash();
-    currentBet = null;
-    isSpinning = false;
-    setTimeout(() => {
-      viewportElement.style.borderColor = '#ffd700';
-      viewportElement.style.boxShadow = '0 0 10px #ffd700';
-    }, 2000);
-    setTimeout(() => {
-      squares.style.transition = 'none';
-      squares.style.transform = `translateX(${startPos}px)`;
-      setTimeout(() => {
-        squares.style.transition = 'transform 12s cubic-bezier(0.4, 0, 0.2, 1)';
-      }, 50);
-    }, 1000);
-  }, 12000);
-}
-document.getElementById('slotsList').style.display = 'none';
-document.getElementById('ticksSlotMachine').style.display = 'none';
-document.getElementById('willowSlotMachine').style.display = 'none';
-document.getElementById('janetSlotMachine').style.display = 'none';
-document.getElementById('dracoSlotMachine').style.display = 'none';
-document.getElementById('brainrotSlotMachine').style.display = 'none';
-updateCash();
-const slotReels = document.querySelectorAll('.slot-reel');
-slotReels.forEach(reel => {
-  reel.style.backgroundImage = `url('${tickSymbols[0]}')`;
-});
-const willowReels = document.querySelectorAll('#willowSlotMachine .slot-reel');
-willowReels.forEach(reel => {
-  reel.style.backgroundImage = `url('${willowSymbols[0]}')`;
-});
-const dracoReels = document.querySelectorAll('#dracoSlotMachine .slot-reel');
-dracoReels.forEach(reel => {
-  reel.style.backgroundImage = `url('${dracoSymbols[0]}')`;
-});
-const brainrotReels = document.querySelectorAll('#brainrotSlotMachine .slot-reel');
-brainrotReels.forEach(reel => {
-  reel.style.backgroundImage = `url('${brainrotSymbols[0]}')`;
-});
 function spinWillowSlots() {
   if (isSpinning) return;
   const betAmount = parseInt(document.getElementById('willowSlotBetAmount').value);
@@ -765,5 +873,451 @@ function spinBrainrotSlots() {
     }, 100);
   });
 }
-</script>
-</body></html>
+function spinSproutSlots() {
+  if (isSpinning) return;
+  
+  const betAmount = parseInt(document.getElementById('sproutSlotBetAmount').value);
+  if (betAmount > cash) {
+    alert("You don't have enough cash!");
+    return;
+  }
+  if (betAmount < 1) {
+    alert("Please enter a valid bet amount!");
+    return;
+  }
+
+  cash -= betAmount;
+  updateCash();
+  isSpinning = true;
+
+  const reels = [
+    document.getElementById('sproutReel1'),
+    document.getElementById('sproutReel2'), 
+    document.getElementById('sproutReel3')
+  ];
+  
+  const results = [];
+  let spinCount = 0;
+  
+  // Rigged win rates
+  const rand = Math.random();
+  const isTripleWin = rand < 0.01; // 1% triple win
+  const isDoubleWin = !isTripleWin && rand < 0.10; // Additional 9% double win
+  
+  const symbol1 = sproutSymbols[Math.floor(Math.random() * sproutSymbols.length)];
+  const symbol2 = isDoubleWin || isTripleWin ? symbol1 : sproutSymbols[Math.floor(Math.random() * sproutSymbols.length)];
+  const symbol3 = isTripleWin ? symbol1 : sproutSymbols[Math.floor(Math.random() * sproutSymbols.length)];
+
+  const finalSymbols = [symbol1, symbol2, symbol3];
+  
+  reels.forEach((reel, index) => {
+    let spins = 0;
+    results.push(finalSymbols[index]);
+    
+    const interval = setInterval(() => {
+      const randomSymbol = sproutSymbols[Math.floor(Math.random() * sproutSymbols.length)];
+      reel.style.backgroundImage = `url('${randomSymbol}')`;
+      spins++;
+      
+      if (spins > 10 + index * 5) {
+        clearInterval(interval);
+        reel.style.backgroundImage = `url('${finalSymbols[index]}')`;
+        spinCount++;
+        if (spinCount === 3) {
+          checkWin(results, betAmount);
+        }
+      }
+    }, 100);
+  });
+}
+function spinMelodieSlots() {
+  if (isSpinning) return;
+  
+  const betAmount = parseInt(document.getElementById('melodieSlotBetAmount').value);
+  if (betAmount > cash) {
+    alert("You don't have enough cash!");
+    return;
+  }
+  if (betAmount < 1) {
+    alert("Please enter a valid bet amount!");
+    return;
+  }
+
+  cash -= betAmount;
+  updateCash();
+  isSpinning = true;
+
+  const reels = [
+    document.getElementById('melodieReel1'),
+    document.getElementById('melodieReel2'),
+    document.getElementById('melodieReel3')
+  ];
+  
+  const results = [];
+  let spinCount = 0;
+  
+  const rand = Math.random();
+  const isWin = rand < 0.33;
+  
+  const symbol1 = melodieSymbols[Math.floor(Math.random() * melodieSymbols.length)];
+  const symbol2 = isWin ? symbol1 : melodieSymbols[Math.floor(Math.random() * melodieSymbols.length)];
+  const symbol3 = isWin ? symbol1 : melodieSymbols[Math.floor(Math.random() * melodieSymbols.length)];
+
+  const finalSymbols = [symbol1, symbol2, symbol3];
+  
+  reels.forEach((reel, index) => {
+    let spins = 0;
+    results.push(finalSymbols[index]);
+    
+    const interval = setInterval(() => {
+      const randomSymbol = melodieSymbols[Math.floor(Math.random() * melodieSymbols.length)];
+      reel.style.backgroundImage = `url('${randomSymbol}')`;
+      spins++;
+      
+      if (spins > 10 + index * 5) {
+        clearInterval(interval);
+        reel.style.backgroundImage = `url('${finalSymbols[index]}')`;
+        spinCount++;
+        if (spinCount === 3) {
+          setTimeout(() => {
+            checkWin(results, betAmount);
+          }, 100);
+        }
+      }
+    }, 100);
+  });
+}
+let playerHand = [];
+let dealerHand = [];
+let currentGoFishBet = 0;
+const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+let isGoFishActive = false;
+function showRoulette() {
+  document.querySelector('.roulette-container').style.display = 'block';
+  document.getElementById('ticksSlotMachine').style.display = 'none';
+  document.getElementById('willowSlotMachine').style.display = 'none';
+  document.getElementById('janetSlotMachine').style.display = 'none';
+  document.getElementById('dracoSlotMachine').style.display = 'none';
+  document.getElementById('brainrotSlotMachine').style.display = 'none';
+  document.getElementById('sproutSlotMachine').style.display = 'none';
+  document.getElementById('melodieSlotMachine').style.display = 'none';
+  document.querySelector('.welcome-text').style.display = 'none';
+  document.querySelector('.description').style.display = 'none';
+  document.querySelector('.go-fish-container').style.display = 'none';
+}
+const rouletteSquares = document.getElementById('rouletteSquares');
+const colors = ['#ff4444', '#333333'];
+for (let i = 0; i < 200; i++) {
+  const square = document.createElement('div');
+  square.className = 'square';
+  square.style.background = colors[i % 2];
+  rouletteSquares.appendChild(square);
+}
+rouletteSquares.style.transform = 'translateX(-3000px)';
+function placeBet(color) {
+  if (isSpinning) return;
+  const betAmount = parseInt(document.getElementById('rouletteBet').value);
+  if (isNaN(betAmount) || betAmount < 1) {
+    alert("Please enter a valid bet amount!");
+    return;
+  }
+  if (cash < betAmount) {
+    alert("You don't have enough cash to place this bet!");
+    return;
+  }
+  currentBet = color;
+  cash -= betAmount;
+  updateCash();
+  startRoulette(betAmount);
+}
+function startRoulette(betAmount) {
+  if (isSpinning || !currentBet) return;
+  isSpinning = true;
+
+  const squares = document.getElementById('rouletteSquares');
+  const rolls = Math.floor(Math.random() * 2) + 2;
+  const positions = rolls * 20;
+
+  // Force win/lose based on 20% win rate
+  const willWin = Math.random() < 0.20;
+  let finalPosition;
+
+  if (currentBet === 'red') {
+    // If betting red, even numbers will be red
+    finalPosition = willWin ? (Math.floor(Math.random() * 10) * 2) : (Math.floor(Math.random() * 10) * 2 + 1);
+  } else {
+    // If betting black, odd numbers will be black
+    finalPosition = willWin ? (Math.floor(Math.random() * 10) * 2 + 1) : (Math.floor(Math.random() * 10) * 2);
+  }
+
+  const startPos = -3000;
+  const moveAmount = (positions + finalPosition) * 60;
+  
+  squares.style.transition = 'none';
+  squares.style.transform = `translateX(${startPos}px)`;
+  squares.offsetHeight;
+  squares.style.transition = 'transform 12s cubic-bezier(0.4, 0, 0.2, 1)';
+  squares.style.transform = `translateX(${startPos - moveAmount}px)`;
+
+  // Rest of the roulette function remains the same...
+  setTimeout(() => {
+    const viewportElement = document.querySelector('.roulette-viewport');
+    const viewportRect = viewportElement.getBoundingClientRect();
+    const allSquares = document.querySelectorAll('.square');
+    let redCount = 0;
+    let blackCount = 0;
+    allSquares.forEach(square => {
+      const squareRect = square.getBoundingClientRect();
+      const squareCenter = squareRect.left + squareRect.width / 2;
+      if (squareCenter >= viewportRect.left && squareCenter <= viewportRect.right) {
+        if (square.style.background === 'rgb(255, 68, 68)') {
+          redCount++;
+        } else {
+          blackCount++;
+        }
+      }
+    });
+    // Rest of the timeout code...
+    const result = redCount > blackCount ? 'red' : 'black';
+    viewportElement.style.borderColor = result === 'red' ? '#ff4444' : '#333333';
+    viewportElement.style.boxShadow = `0 0 20px ${result === 'red' ? '#ff4444' : '#333333'}`;
+    if (result === currentBet) {
+      const winAmount = betAmount * 2;
+      cash += winAmount;
+      alert(`You won! The result is ${result.toUpperCase()}! You won $${winAmount}!`);
+    } else {
+      alert(`You lost! The result is ${result.toUpperCase()}!`);
+    }
+    updateCash();
+    currentBet = null;
+    isSpinning = false;
+    setTimeout(() => {
+      viewportElement.style.borderColor = '#ffd700';
+      viewportElement.style.boxShadow = '0 0 10px #ffd700';
+    }, 2000);
+    setTimeout(() => {
+      squares.style.transition = 'none';
+      squares.style.transform = `translateX(${startPos}px)`;
+      setTimeout(() => {
+        squares.style.transition = 'transform 12s cubic-bezier(0.4, 0, 0.2, 1)';
+      }, 50);
+    }, 1000);
+  }, 12000);
+}
+document.getElementById('slotsList').style.display = 'none';
+document.getElementById('ticksSlotMachine').style.display = 'none';
+document.getElementById('willowSlotMachine').style.display = 'none';
+document.getElementById('janetSlotMachine').style.display = 'none';
+document.getElementById('dracoSlotMachine').style.display = 'none';
+document.getElementById('brainrotSlotMachine').style.display = 'none';
+document.getElementById('sproutSlotMachine').style.display = 'none';
+document.getElementById('melodieSlotMachine').style.display = 'none';
+document.querySelector('.go-fish-container').style.display = 'none';
+updateCash();
+const slotReels = document.querySelectorAll('.slot-reel');
+slotReels.forEach(reel => {
+  reel.style.backgroundImage = `url('${tickSymbols[0]}')`;
+});
+const willowReels = document.querySelectorAll('#willowSlotMachine .slot-reel');
+willowReels.forEach(reel => {
+  reel.style.backgroundImage = `url('${willowSymbols[0]}')`;
+});
+const dracoReels = document.querySelectorAll('#dracoSlotMachine .slot-reel');
+dracoReels.forEach(reel => {
+  reel.style.backgroundImage = `url('${dracoSymbols[0]}')`;
+});
+const brainrotReels = document.querySelectorAll('#brainrotSlotMachine .slot-reel');
+brainrotReels.forEach(reel => {
+  reel.style.backgroundImage = `url('${brainrotSymbols[0]}')`;
+});
+const sproutReels = document.querySelectorAll('#sproutSlotMachine .slot-reel');
+sproutReels.forEach(reel => {
+  reel.style.backgroundImage = `url('${sproutSymbols[0]}')`;
+});
+const melodieReels = document.querySelectorAll('#melodieSlotMachine .slot-reel');
+melodieReels.forEach(reel => {
+  reel.style.backgroundImage = `url('${melodieSymbols[0]}')`;
+});
+
+function showGoFish() {
+  document.querySelector('.roulette-container').style.display = 'none';
+  document.querySelector('.welcome-text').style.display = 'none';
+  document.querySelector('.description').style.display = 'none';
+  document.querySelector('.go-fish-container').style.display = 'block';
+  document.querySelectorAll('.slot-machine').forEach(machine => {
+    machine.style.display = 'none';
+  });
+}
+function startGoFish() {
+  if (isGoFishActive) return;
+  const betAmount = parseInt(document.getElementById('goFishBet').value);
+  if (betAmount > cash || betAmount < 1) {
+    alert("Invalid bet amount!");
+    return;
+  }
+  cash -= betAmount;
+  currentGoFishBet = betAmount;
+  updateCash();
+  isGoFishActive = true;
+  playerHand = dealCards(7);
+  dealerHand = dealCards(7);
+  updatePlayerHand();
+  updateDealerHand();
+  updateRankSelect();
+  document.querySelector('.game-messages').textContent = "Game started! Select a rank and ask the dealer.";
+  startDealerTurn();
+}
+function dealCards(count) {
+  const deck = [];
+  for (const rank of ranks) {
+    for (let i = 0; i < 4; i++) {
+      deck.push(rank);
+    }
+  }
+  const hand = [];
+  for (let i = 0; i < count; i++) {
+    const index = Math.floor(Math.random() * deck.length);
+    hand.push(deck.splice(index, 1)[0]);
+  }
+  return hand;
+}
+function updatePlayerHand() {
+  const handContainer = document.querySelector('.player-hand');
+  handContainer.innerHTML = '';
+  playerHand.sort().forEach(card => {
+    const cardElement = document.createElement('div');
+    cardElement.className = 'card';
+    cardElement.textContent = card;
+    handContainer.appendChild(cardElement);
+  });
+}
+function updateDealerHand() {
+  const dealerHandContainer = document.querySelector('.dealer-hand');
+  dealerHandContainer.innerHTML = '';
+  const dealerEmojiDiv = document.createElement('div');
+  dealerEmojiDiv.className = 'dealer-emoji';
+  dealerEmojiDiv.innerHTML = dealerEmoji;
+  dealerHandContainer.appendChild(dealerEmojiDiv);
+  for (let i = 0; i < dealerHand.length; i++) {
+    const cardElement = document.createElement('div');
+    cardElement.className = 'dealer-card';
+    dealerHandContainer.appendChild(cardElement);
+  }
+}
+function updateRankSelect() {
+  const select = document.getElementById('cardRankSelect');
+  select.innerHTML = '<option value="">Select a rank...</option>';
+  [...new Set(playerHand)].forEach(rank => {
+    const option = document.createElement('option');
+    option.value = rank;
+    option.textContent = rank;
+    select.appendChild(option);
+  });
+}
+function askForCard() {
+  if (!isGoFishActive || dealerTurn || dealerThinking) return;
+  const rank = document.getElementById('cardRankSelect').value;
+  if (!rank) {
+    alert("Please select a rank!");
+    return;
+  }
+  const matches = dealerHand.filter(card => card === rank);
+  const messageEl = document.querySelector('.game-messages');
+  if (matches.length > 0) {
+    dealerEmoji = DEALER_FISHING;
+    updateDealerHand();
+    matches.forEach(card => {
+      playerHand.push(card);
+      dealerHand = dealerHand.filter(c => c !== card);
+    });
+    messageEl.textContent = `Got ${matches.length} ${rank}'s!`;
+    checkForSets();
+  } else {
+    dealerEmoji = DEALER_GO_FISH;
+    updateDealerHand();
+    messageEl.textContent = "Go Fish! Draw a card.";
+    const newCard = dealCards(1)[0];
+    playerHand.push(newCard);
+    if (newCard === rank) {
+      messageEl.textContent += ` Drew a ${newCard}! Go again!`;
+    }
+  }
+  updatePlayerHand();
+  updateRankSelect();
+  checkGameEnd();
+  setTimeout(() => startDealerTurn(), 1500);
+}
+function checkForSets() {
+  const ranks = {};
+  playerHand.forEach(card => {
+    ranks[card] = (ranks[card] || 0) + 1;
+  });
+  for (const [rank, count] of Object.entries(ranks)) {
+    if (count === 4) {
+      playerHand = playerHand.filter(card => card !== rank);
+      cash += currentGoFishBet * 2;
+      updateCash();
+      alert(`You got a set of ${rank}'s! You won $${currentGoFishBet * 2}!`);
+    }
+  }
+}
+function checkGameEnd() {
+  if (playerHand.length === 0) {
+    document.querySelector('.game-messages').textContent = "You won! You got all the cards!";
+    cash += currentGoFishBet * 2;
+    updateCash();
+    alert(`You won! You got all the cards! You won $${currentGoFishBet * 2}!`);
+    isGoFishActive = false;
+  } else if (dealerHand.length === 0) {
+    document.querySelector('.game-messages').textContent = "Dealer won! They got all the cards!";
+    alert('Better luck next time!');
+    isGoFishActive = false;
+  }
+}
+function startDealerTurn() {
+  if (!isGoFishActive) return;
+  dealerTurn = true;
+  dealerThinking = true;
+  setTimeout(() => {
+    const availableRanks = [...new Set(dealerHand)];
+    if (availableRanks.length === 0) {
+      dealerTurn = false;
+      return;
+    }
+    const askRank = availableRanks[Math.floor(Math.random() * availableRanks.length)];
+    dealerEmoji = DEALER_THINKING;
+    updateDealerHand();
+    document.querySelector('.game-messages').textContent = `Dealer asks: Do you have any ${askRank}'s?`;
+    const matches = playerHand.filter(card => card === askRank);
+    setTimeout(() => {
+      if (matches.length > 0) {
+        matches.forEach(card => {
+          dealerHand.push(card);
+          playerHand = playerHand.filter(c => c !== card);
+        });
+        dealerEmoji = DEALER_GOT_CARD;
+        document.querySelector('.game-messages').textContent = `You gave ${matches.length} ${askRank}'s to the dealer!`;
+      } else {
+        dealerEmoji = DEALER_GO_FISH;
+        const newCard = dealCards(1)[0];
+        dealerHand.push(newCard);
+        document.querySelector('.game-messages').textContent = "Dealer went fishing!";
+      }
+      updateDealerHand();
+      updatePlayerHand();
+      updateRankSelect();
+      checkGameEnd();
+      dealerTurn = false;
+      dealerThinking = false;
+      dealerEmoji = DEALER_IDLE;
+      setTimeout(() => updateDealerHand(), 1000);
+    }, 2000);
+  }, 1500);
+}
+const DEALER_IDLE = '<img src="https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9jV3NBdG1udDRMN1EyWHYxQ0NXVC5wbmcifQ:supercell:QREQREg6461JK4UUFcB-ECku18WsP5joWJa7EPFOEaQ?width=2400" style="width: 48px; height: 48px;">';
+const DEALER_FISHING = '<img src="https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9hWUNxcTFBbjlWU1U3eXZNTEpSMi5wbmcifQ:supercell:Qz43v-RU3PAZcckupA8yAVWMvb8cL5wLYXHP0de8qk0?width=800" style="width: 48px; height: 48px;">';
+const DEALER_GOT_CARD = '<img src="https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9lZkpoZVhqUFJlRldzbmlTV3ZyUS5wbmcifQ:supercell:kljifFkcepAkR6bQfKRUs-Hawj2-Nde4wvJ2VkQ_IVU?width=800" style="width: 48px; height: 48px;">';
+const DEALER_THINKING = '<img src="https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC9HZjd1TVBHczc5amJZUEQ1Z21jdi5wbmcifQ:supercell:897t8zATwK-KrwYngqOkrzGFvrUkUKMzcUI_SgC4ZYM?width=800" style="width: 48px; height: 48px;">';
+const DEALER_GO_FISH = '<img src="https://cdn-assets-eu.frontify.com/s3/frontify-enterprise-files-eu/eyJwYXRoIjoic3VwZXJjZWxsXC9maWxlXC84QXQzcG1rWHhURUhONXB4WEY5eS5wbmcifQ:supercell:0th-pM4AMjIm2MFMCdrZyBVTu2gKcWzh0Pg2YN-MlYE?width=800" style="width: 48px; height: 48px;">';</script>
+</body>
+</html>
